@@ -16,9 +16,9 @@ student_list = []
 def add_student(student_id, full_name, age, gpa):
     """Add a new student to the list."""
     for s in student_list:
-            if s.student_id == student_id:
-                print(f"Error: Student ID '{student_id}' already exists!")
-                return False
+        if s.student_id == student_id:
+            print(f"Error: Student ID '{student_id}' already exists!")
+            return False
 
         new_student = Student(student_id, full_name, age, gpa)
 
