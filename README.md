@@ -23,7 +23,7 @@
 ### Các bước thực hiện
 1. Clone repository này về máy local:
    ```bash
-   git clone https://github.com/[your-username]/group5-github-practice.git
+   git clone https://github.com/23521382/group5-github-practice.git
    ```
 2. Di chuyển vào thư mục dự án:
    ```bash
