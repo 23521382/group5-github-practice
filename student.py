@@ -24,33 +24,32 @@ def display_all():
 
 
 def search(keyword):
-    """Search for a student by name or student ID.
+    """Search for students by name or student ID.
 
-    Matches when `keyword` is a case-insensitive substring of the student's
-    full name, or when it exactly equals the student's ID (case-insensitive).
-    Prints matched students and returns a list of `Student` objects.
+    The search is case-insensitive and returns every student whose name
+    contains the keyword or whose student ID matches it exactly.
     """
     if keyword is None:
-        print("⚠️ No search keyword provided.")
+        print("No search keyword provided.")
         return []
 
-    kw = str(keyword).strip().lower()
-    if not kw:
-        print("⚠️ No search keyword provided.")
+    search_text = str(keyword).strip().lower()
+    if not search_text:
+        print("No search keyword provided.")
         return []
 
-    matches = []
-    for s in student_list:
-        name = getattr(s, "full_name", "") or ""
-        sid = str(getattr(s, "student_id", ""))
-        if kw in name.lower() or kw == sid.lower():
-            matches.append(s)
+    matches = [
+        student
+        for student in student_list
+        if search_text in (getattr(student, "full_name", "") or "").lower()
+        or search_text == str(getattr(student, "student_id", "")).lower()
+    ]
 
-    if not matches:
-        print(f"No students found for '{keyword}'.")
-    else:
+    if matches:
         print(f"Found {len(matches)} student(s):")
-        for m in matches:
-            print(m)
+        for student in matches:
+            print(student)
+    else:
+        print(f"No students found for '{keyword}'.")
 
     return matches
