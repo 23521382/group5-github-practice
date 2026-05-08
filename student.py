@@ -19,8 +19,15 @@ def add_student(student_id, full_name, age, gpa):
 
 
 def display_all():
-    """Display all students in the list."""
+    if not student_list:
+        print("\n[!] Hiện chưa có sinh viên nào trong danh sách.")
+        return
 
+    print(f"\n{'ID':<10} | {'Full Name':<20} | {'Age':<5} | {'GPA':<5}")
+    print("-" * 45)
+
+    for s in student_list:
+        print(f"{s.student_id:<10} | {s.full_name:<20} | {s.age:<5} | {s.gpa:<5}")
 
 
 def search(keyword):
